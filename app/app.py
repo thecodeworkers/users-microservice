@@ -1,5 +1,6 @@
 from .settings import Database, Server
 from .utils import paginate
+from .models import Profiles
 
 class App():
     def __init__(self):
