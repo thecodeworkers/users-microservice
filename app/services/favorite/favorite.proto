@@ -1,0 +1,33 @@
+syntax = "proto2";
+
+message FavoriteEmpty {}
+
+message FavoriteIdRequest {
+  required string id = 1;
+}
+
+message FavoriteNotIdRequest {
+  required string names = 1;
+  required string username = 2;
+}
+
+message FavoriteRequest {
+  required string id = 1;
+  required string names = 2;
+  required string username = 3;
+}
+
+message FavoriteResponse {
+  required FavoriteRequest favorite = 1;
+}
+
+message FavoriteMultipleResponse {
+  repeated FavoriteRequest favorite = 1;
+}
+
+service Favorite {
+  rpc get_all (FavoriteEmpty) returns (FavoriteMultipleResponse);
+  rpc save (FavoriteNotIdRequest) returns (FavoriteResponse);
+  rpc update (FavoriteRequest) returns (FavoriteResponse);
+  rpc delete (FavoriteIdRequest) returns (FavoriteResponse);
+}

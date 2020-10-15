@@ -1,0 +1,1 @@
+from .favorite_service import start_favorite_service

@@ -1,0 +1,33 @@
+syntax = "proto2";
+
+message WhitelistEmpty {}
+
+message WhitelistIdRequest {
+  required string id = 1;
+}
+
+message WhitelistNotIdRequest {
+  required string address = 1;
+  required string currency = 2;
+}
+
+message WhitelistRequest {
+  required string id = 1;
+  required string address = 2;
+  required string currency = 3;
+}
+
+message WhitelistResponse {
+  required WhitelistRequest whitelist = 1;
+}
+
+message WhitelistMultipleResponse {
+  repeated WhitelistRequest whitelist = 1;
+}
+
+service Whitelist {
+  rpc get_all (WhitelistEmpty) returns (WhitelistMultipleResponse);
+  rpc save (WhitelistNotIdRequest) returns (WhitelistResponse);
+  rpc update (WhitelistRequest) returns (WhitelistResponse);
+  rpc delete (WhitelistIdRequest) returns (WhitelistResponse);
+}

@@ -1,0 +1,39 @@
+syntax = "proto2";
+
+message BankAccountEmpty {}
+
+message BankAccountIdRequest {
+  required string id = 1;
+}
+
+message BankAccountNotIdRequest {
+  required string chase = 1;
+  required string branchAddress = 2;
+  required string checkingAccount = 3;
+  optional string routingNumber = 4;
+  optional string bank = 5;
+}
+
+message BankAccountRequest {
+  required string id = 1;
+  required string chase = 2;
+  required string branchAddress = 3;
+  required string checkingAccount = 4;
+  optional string routingNumber = 5;
+  optional string bank = 6;
+}
+
+message BankAccountResponse {
+  required BankAccountRequest bankAccount = 1;
+}
+
+message BankAccountMultipleResponse {
+  repeated BankAccountRequest bankAccount = 1;
+}
+
+service BankAccount {
+  rpc get_all (BankAccountEmpty) returns (BankAccountMultipleResponse);
+  rpc save (BankAccountNotIdRequest) returns (BankAccountResponse);
+  rpc update (BankAccountRequest) returns (BankAccountResponse);
+  rpc delete (BankAccountIdRequest) returns (BankAccountResponse);
+}
