@@ -31,7 +31,7 @@ class FavoriteService(FavoriteServicer):
             favorite = parser_one_object(favorite)
             del favorite['user']
 
-            response = FavoriteResponse(bankAccount=favorite)
+            response = FavoriteResponse(favorite=favorite)
 
             return response
 
@@ -53,7 +53,7 @@ class FavoriteService(FavoriteServicer):
             favorite = parser_one_object(favorite)
             del favorite['user']
 
-            response = FavoriteResponse(bankAccount=favorite)
+            response = FavoriteResponse(favorite=favorite)
 
             return response
 
