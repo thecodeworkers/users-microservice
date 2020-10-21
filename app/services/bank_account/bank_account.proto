@@ -10,8 +10,8 @@ message BankAccountNotIdRequest {
   required string chase = 1;
   required string branchAddress = 2;
   required string checkingAccount = 3;
-  optional string routingNumber = 4;
-  optional string bank = 5;
+  required string routingNumber = 4;
+  required string bank = 5;
 }
 
 message BankAccountRequest {
@@ -19,8 +19,8 @@ message BankAccountRequest {
   required string chase = 2;
   required string branchAddress = 3;
   required string checkingAccount = 4;
-  optional string routingNumber = 5;
-  optional string bank = 6;
+  required string routingNumber = 5;
+  required string bank = 6;
 }
 
 message BankAccountResponse {
