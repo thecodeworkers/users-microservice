@@ -7,10 +7,10 @@ class CustomQuerySet(QuerySet):
 
 class BankAccounts(Document):
     user = ObjectIdField(required=True)
-    chase = StringField(max_length=255, required=True)
-    branchAddress = StringField(max_length=255, required=True)
-    checkingAccount = StringField(max_length=255, required=True)
-    routingNumber = StringField(max_length=255, required=True)
+    chase = StringField(min_length=2, max_length=255, required=True)
+    branchAddress = StringField(min_length=2, max_length=255, required=True)
+    checkingAccount = StringField(min_length=2, max_length=255, required=True)
+    routingNumber = StringField(min_length=2, max_length=255, required=True)
     bank = ObjectIdField(required=True)
 
     meta = {'queryset_class': CustomQuerySet}
