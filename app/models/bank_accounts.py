@@ -15,6 +15,15 @@ class BankAccounts(Document):
 
     meta = {'queryset_class': CustomQuerySet}
 
+    meta = {
+        'indexes': [
+            {
+                'fields': ['+bank', '+routingNumber'],
+                'unique': True
+            }
+        ]
+    }
+
     def to_json(self):
         data = self.to_mongo()
         data['bank'] = str(self.bank)
