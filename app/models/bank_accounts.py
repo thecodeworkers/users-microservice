@@ -13,9 +13,8 @@ class BankAccounts(Document):
     routingNumber = StringField(min_length=2, max_length=255, required=True)
     bank = ObjectIdField(required=True)
 
-    meta = {'queryset_class': CustomQuerySet}
-
     meta = {
+        'queryset_class': CustomQuerySet, 
         'indexes': [
             {
                 'fields': ['+bank', '+routingNumber'],
@@ -27,5 +26,4 @@ class BankAccounts(Document):
     def to_json(self):
         data = self.to_mongo()
         data['bank'] = str(self.bank)
-
         return json_util.dumps(data)
